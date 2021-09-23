@@ -1,0 +1,262 @@
+@import "scss/variables.scss";
+
+.navbar {
+  padding: 0;
+  // ul {
+  //   margin: 0;
+  //   padding: 0;
+  //   display: flex;
+  //   list-style: none;
+  //   align-items: center;
+  // }
+
+  li {
+    position: relative;
+    &:hover > a {
+      color: $color_cerise_approx;
+    }
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 10px 30px;
+    font-size: 14px;
+    font-family: $inter-ui-fonts;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    color: $color_san_juan_approx;
+    white-space: nowrap;
+    //If you use compass, instead of the line below you could use + transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: 0.3s;
+    &:focus {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0 10px 30px;
+      font-size: 14px;
+      color: $color_san_juan_approx;
+      white-space: nowrap;
+      //If you use compass, instead of the line below you could use + transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+      transition: 0.3s;
+      i {
+        font-size: 12px;
+        line-height: 0;
+        margin-left: 5px;
+      }
+    }
+    i {
+      font-size: 12px;
+      line-height: 0;
+      margin-left: 5px;
+    }
+
+    &:hover {
+      color: $color_cerise_approx;
+    }
+  }
+
+  .active {
+    color: $color_cerise_approx;
+    &:focus {
+      color: $color_cerise_approx;
+    }
+  }
+
+  .dropdown {
+    ul {
+      display: block;
+      position: absolute;
+      left: 14px;
+      top: 100%;
+      margin: 0;
+      padding: 10px 0;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+      background: $white;
+      //If you use compass, instead of the line below you could use + box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: 0 0 30px $color_manatee_25_approx;
+      //If you use compass, instead of the line below you could use + transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+      transition: 0.3s;
+      //If you use compass, instead of the line below you could use + border-radius($radius, $vertical-radius)
+      border-radius: 4px;
+      li {
+        min-width: 200px;
+        &:hover > a {
+          color: $color_cerise_approx;
+        }
+      }
+
+      a {
+        padding: 10px 20px;
+        text-transform: none;
+        i {
+          font-size: 12px;
+        }
+        &:hover {
+          color: $color_cerise_approx;
+        }
+      }
+      .active:hover {
+        color: $color_cerise_approx;
+      }
+    }
+    .dropdown {
+      ul {
+        top: 0;
+        left: calc(100% - 30px);
+        visibility: hidden;
+      }
+      &:hover > ul {
+        opacity: 1;
+        top: 0;
+        left: 100%;
+        visibility: visible;
+      }
+    }
+
+    &:hover > ul {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+@include media-breakpoint-down(xxl) {
+  .navbar .dropdown .dropdown {
+    ul {
+      left: -90%;
+    }
+    &:hover > ul {
+      left: -100%;
+    }
+  }
+}
+
+.mobile-nav-toggle {
+  color: $color_san_juan_approx;
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
+  line-height: 0;
+  //If you use compass, instead of the line below you could use + transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+  transition: 0.5s;
+  &.bi-x {
+    color: $white;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .navbar ul {
+    display: none;
+  }
+}
+
+.navbar-mobile {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: $color_bunker_60_approx;
+  //If you use compass, instead of the line below you could use + transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+  transition: 0.3s;
+  z-index: 998;
+  .mobile-nav-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+  ul {
+    display: block;
+    position: absolute;
+    top: 55px;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    padding: 10px 0;
+    //If you use compass, instead of the line below you could use + border-radius($radius, $vertical-radius)
+    border-radius: 10px;
+    background-color: $white;
+    overflow-y: auto;
+    //If you use compass, instead of the line below you could use + transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+    transition: 0.3s;
+  }
+
+  a {
+    padding: 10px 20px;
+    font-size: 15px;
+    color: $color_san_juan_approx;
+    &:focus {
+      padding: 10px 20px;
+      font-size: 15px;
+      color: $color_san_juan_approx;
+    }
+
+    &:hover {
+      color: $color_cerise_approx;
+    }
+  }
+
+  .active {
+    color: $color_cerise_approx;
+  }
+
+  .getstarted {
+    margin: 15px;
+    &:focus {
+      margin: 15px;
+    }
+  }
+
+  .dropdown {
+    ul {
+      position: static;
+      display: none;
+      margin: 10px 20px;
+      padding: 10px 0;
+      z-index: 99;
+      opacity: 1;
+      visibility: visible;
+      background: $white;
+      //If you use compass, instead of the line below you could use + box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      box-shadow: 0 0 30px $color_manatee_25_approx;
+      li {
+        min-width: 200px;
+        &:hover > a {
+          color: $color_cerise_approx;
+        }
+      }
+
+      a {
+        padding: 10px 20px;
+        i {
+          font-size: 12px;
+        }
+
+        &:hover {
+          color: $color_cerise_approx;
+        }
+      }
+
+      .active:hover {
+        color: $color_cerise_approx;
+      }
+    }
+
+    > .dropdown-active {
+      display: block;
+    }
+  }
+  li:hover > a {
+    color: $color_cerise_approx;
+  }
+}

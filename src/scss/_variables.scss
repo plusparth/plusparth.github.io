@@ -1,0 +1,14 @@
+@import "~bootstrap/scss/functions";
+
+$inter-ui-fonts: "Inter var", "Inter", "system-ui", "-apple-system", "Segoe UI",
+  "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "Liberation Sans",
+  sans-serif;
+
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+
+$color_san_juan_approx: #2c4964;
+$color_cerise_approx: #d43076;
+$color_manatee_25_approx: rgba(127, 137, 161, 0.25);
+$color_bunker_60_approx: rgba(13, 21, 29, 0.6);
