@@ -1,6 +1,5 @@
 import React from "react";
 import { NavHashLink } from "react-router-hash-link";
-import { Navbar, Container, NavDropdown } from "react-bootstrap";
 
 import "./PersonalNavbar.scss";
 import { List } from "react-bootstrap-icons";
