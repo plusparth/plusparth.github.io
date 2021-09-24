@@ -1,0 +1,13 @@
+@import "scss/variables.scss";
+
+.section {
+  padding: 60px 0;
+}
+
+.section-light {
+  background: $white;
+}
+
+.section-dark {
+  background: $gray-100;
+}

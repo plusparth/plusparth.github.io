@@ -1,0 +1,26 @@
+@use "sass:color";
+@import "scss/variables.scss";
+
+.skill-bar {
+  .progress {
+    height: 0.5em;
+    display: block;
+    background-color: color.scale($color-highlight, $lightness: 85%);
+    .progress-bar {
+      height: 100%;
+      background-color: color.scale($color-highlight, $lightness: 30%);
+    }
+  }
+
+  .skill {
+    padding: 1rem 0;
+    margin: 0 0 1.5rem 0;
+    text-transform: uppercase;
+    font-family: $inter-ui-fonts;
+    color: color.scale($color-heading, $lightness: 15%);
+    font-size: 14px;
+    font-weight: 900;
+  }
+
+  margin-bottom: 0.5rem;
+}

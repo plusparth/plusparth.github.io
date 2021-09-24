@@ -1,0 +1,32 @@
+@import "scss/variables.scss";
+
+.about-content {
+  padding: 30px 0;
+
+  h2 {
+    // font-weight: 500;
+    // font-size: 34px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    &::after {
+      @include highlight-underline;
+    }
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  .count-box {
+    padding: 20px 0;
+
+    i {
+    }
+  }
+}
+
+.about-image {
+  background: url("/img/parth.jpeg") center center no-repeat;
+  background-size: cover;
+  min-height: 400px;
+}

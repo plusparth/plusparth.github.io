@@ -8,7 +8,18 @@ $inter-ui-fonts: "Inter var", "Inter", "system-ui", "-apple-system", "Segoe UI",
 @import "~bootstrap/scss/mixins";
 @import "~bootstrap/scss/root";
 
-$color_san_juan_approx: #2c4964;
-$color_cerise_approx: #d43076;
-$color_manatee_25_approx: rgba(127, 137, 161, 0.25);
-$color_bunker_60_approx: rgba(13, 21, 29, 0.6);
+$color-heading: #2c4964;
+$color-highlight: $pink;
+$color-text: $gray-800;
+
+@mixin highlight-underline {
+  content: "";
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: $color-highlight;
+  top: 5px;
+  // bottom: 0;
+  left: 0;
+}

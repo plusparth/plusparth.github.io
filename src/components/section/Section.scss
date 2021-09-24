@@ -1,0 +1,22 @@
+@import "scss/variables.scss";
+
+.section-title {
+  h2 {
+    // font-size: 32px;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    position: relative;
+    color: $color-heading;
+
+    &::after {
+      @include highlight-underline;
+    }
+  }
+  p {
+    margin-bottom: 0;
+  }
+
+  margin-bottom: 1rem;
+}
