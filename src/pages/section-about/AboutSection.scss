@@ -23,6 +23,48 @@
     i {
     }
   }
+
+  .social-links {
+    text-align: center;
+
+    a {
+      // display: inline-block;
+      background: $white;
+      color: $color-highlight;
+      line-height: 0;
+      border-radius: 50%;
+      border: 2px solid $color-highlight;
+      height: 3rem;
+      width: 3rem;
+
+      font-size: 1.5rem;
+
+      transition: 0.2s;
+
+      margin: 1rem auto;
+
+      &:hover {
+        background: $color-highlight;
+        color: $white;
+      }
+    }
+  }
+
+  .contact-info {
+    .contact-logo-container {
+      background: $color-highlight;
+      color: $white;
+      border-radius: 50%;
+      border: 2px solid $color-highlight;
+
+      font-size: 1.5rem;
+
+      height: 3rem;
+      width: 3rem;
+
+      margin: 1rem 0.5rem 1rem;
+    }
+  }
 }
 
 .about-image {

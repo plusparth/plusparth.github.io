@@ -28,7 +28,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0.5rem 0 0.5rem 1.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
     font-size: 16px;
     font-family: $inter-ui-fonts;
     text-transform: uppercase;
@@ -42,7 +42,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.5rem 0 0.5rem 1.5rem;
+      // padding: 0.5rem 0 0.5rem 1.5rem;
       // font-size: 14px;
       color: $color-heading;
       white-space: nowrap;
@@ -132,138 +132,10 @@
   }
 }
 
-@include media-breakpoint-down(xxl) {
-  .navbar .dropdown .dropdown {
-    ul {
-      left: -90%;
+@include media-breakpoint-down(sm) {
+  .navbar {
+    a {
+      padding: 0.5rem 0.5rem 0.5rem 0.5rem;
     }
-    &:hover > ul {
-      left: -100%;
-    }
-  }
-}
-
-.mobile-nav-toggle {
-  color: $color-heading;
-  font-size: 28px;
-  cursor: pointer;
-  display: none;
-  line-height: 0;
-  //If you use compass, instead of the line below you could use + transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
-  transition: 0.5s;
-  &.bi-x {
-    color: $white;
-  }
-}
-
-@include media-breakpoint-down(md) {
-  .mobile-nav-toggle {
-    display: block;
-  }
-
-  .navbar ul {
-    display: none;
-  }
-}
-
-.navbar-mobile {
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  background: $gray-200;
-  //If you use compass, instead of the line below you could use + transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
-  transition: 0.2s;
-  z-index: 998;
-  .mobile-nav-toggle {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-  }
-  ul {
-    display: block;
-    position: absolute;
-    top: 55px;
-    right: 15px;
-    bottom: 15px;
-    left: 15px;
-    padding: 10px 0;
-    //If you use compass, instead of the line below you could use + border-radius($radius, $vertical-radius)
-    border-radius: 10px;
-    background-color: $white;
-    overflow-y: auto;
-    //If you use compass, instead of the line below you could use + transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
-    transition: 0.3s;
-  }
-
-  a {
-    padding: 10px 20px;
-    font-size: 15px;
-    color: $color-heading;
-    &:focus {
-      padding: 10px 20px;
-      font-size: 15px;
-      color: $color-heading;
-    }
-
-    &:hover {
-      color: $color-highlight;
-    }
-  }
-
-  .active {
-    color: $color-highlight;
-  }
-
-  .getstarted {
-    margin: 15px;
-    &:focus {
-      margin: 15px;
-    }
-  }
-
-  .dropdown {
-    ul {
-      position: static;
-      display: none;
-      margin: 10px 20px;
-      padding: 10px 0;
-      z-index: 99;
-      opacity: 1;
-      visibility: visible;
-      background: $white;
-      //If you use compass, instead of the line below you could use + box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
-      box-shadow: 0 0 30px $indigo-900;
-      li {
-        min-width: 200px;
-        &:hover > a {
-          color: $color-highlight;
-        }
-      }
-
-      a {
-        padding: 10px 20px;
-        i {
-          font-size: 12px;
-        }
-
-        &:hover {
-          color: $color-highlight;
-        }
-      }
-
-      .active:hover {
-        color: $color-highlight;
-      }
-    }
-
-    > .dropdown-active {
-      display: block;
-    }
-  }
-  li:hover > a {
-    color: $color-highlight;
   }
 }

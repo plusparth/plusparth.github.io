@@ -1,8 +1,8 @@
 import React from "react";
 import { NavHashLink } from "react-router-hash-link";
+// import { ScrollspyNav } from "react-scrollspy-nav";
 
 import "./PersonalNavbar.scss";
-import { List } from "react-bootstrap-icons";
 
 const PersonalNavbar = () => {
   return (
@@ -16,7 +16,7 @@ const PersonalNavbar = () => {
                 smooth
                 to="/#"
                 className="nav-link scrollto"
-                activeClassName="active"
+                activeClassName=""
               >
                 Home
               </NavHashLink>
@@ -24,9 +24,9 @@ const PersonalNavbar = () => {
             <li className="nav-item">
               <NavHashLink
                 smooth
-                to="/#about"
+                to="#about"
                 className="nav-link scrollto"
-                activeClassName="active"
+                activeClassName=""
               >
                 About
               </NavHashLink>
@@ -34,9 +34,9 @@ const PersonalNavbar = () => {
             <li className="nav-item">
               <NavHashLink
                 smooth
-                to="/#skills"
+                to="#skills"
                 className="nav-link scrollto"
-                activeClassName="active"
+                activeClassName=""
               >
                 Skills
               </NavHashLink>
@@ -44,9 +44,9 @@ const PersonalNavbar = () => {
             <li className="nav-item">
               <NavHashLink
                 smooth
-                to="/#resume"
+                to="#resume"
                 className="nav-link scrollto"
-                activeClassName="active"
+                activeClassName=""
               >
                 Resume
               </NavHashLink>
@@ -55,15 +55,15 @@ const PersonalNavbar = () => {
             {/* <li className="nav-item">
               <NavHashLink
                 smooth
-                to="/#portfolio"
+                to="/#projects"
                 className="nav-link scrollto"
                 activeClassName="active"
               >
-                Portfolio
+                Projects
               </NavHashLink>
             </li> */}
           </ul>
-          <List className="mobile-nav-toggle" />
+          {/* <List className="mobile-nav-toggle" /> */}
         </nav>
       </div>
     </header>
