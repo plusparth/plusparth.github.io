@@ -5,18 +5,21 @@ import "./Section.scss";
 
 type SectionProps = {
   id: string;
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   dark?: boolean;
 };
 
 const Section = (props: PropsWithChildren<SectionProps>) => {
   return (
     <TitlelessSection id={props.id} dark={props.dark}>
-      <div className="section-title">
-        <h2>{props.title}</h2>
-        <p>{props.description}</p>
-      </div>
+      {props.title && (
+        <div className="section-title">
+          <h2>{props.title}</h2>
+          {props.description && <p>{props.description}</p>}
+        </div>
+      )}
+
       {props.children}
     </TitlelessSection>
   );
