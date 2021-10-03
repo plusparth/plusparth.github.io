@@ -1,0 +1,30 @@
+@import "scss/variables.scss";
+
+.project-card {
+  box-shadow: 0 0.75rem 0.75rem 0 rgba(0, 0, 0, 0.03);
+}
+
+.project-link-icon {
+  // height: 1.25em;
+  // width: 1.25em;
+}
+
+.project-link {
+  color: $color-heading;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  a {
+    color: $color-heading;
+
+    text-decoration: none;
+    transition: 0.2s;
+
+    &:hover {
+      color: $color-highlight;
+    }
+  }
+
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+}

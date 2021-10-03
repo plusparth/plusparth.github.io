@@ -6,6 +6,7 @@ import AboutSection from "pages/section-about/AboutSection";
 import ResumeSection from "pages/section-resume/ResumeSection";
 import SkillsSection from "pages/section-skills/SkillsSection";
 import { Waypoint } from "react-waypoint";
+import ProjectsSection from "pages/section-projects/ProjectsSection";
 
 class Home extends React.Component {
   render() {
@@ -18,6 +19,7 @@ class Home extends React.Component {
         <AboutSection></AboutSection>
         <SkillsSection></SkillsSection>
         <ResumeSection></ResumeSection>
+        <ProjectsSection></ProjectsSection>
       </div>
     );
   }

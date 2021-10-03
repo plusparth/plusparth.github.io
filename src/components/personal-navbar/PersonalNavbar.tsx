@@ -11,7 +11,7 @@ const PersonalNavbar = () => {
         {/* <div className="logo"></div> */}
         <nav id="navbar" className="navbar navbar-expand">
           <ul className="nav justify-content-center">
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavHashLink
                 smooth
                 to="/#"
@@ -20,7 +20,7 @@ const PersonalNavbar = () => {
               >
                 Home
               </NavHashLink>
-            </li>
+            </li> */}
             <li className="nav-item">
               <NavHashLink
                 smooth
@@ -52,16 +52,16 @@ const PersonalNavbar = () => {
               </NavHashLink>
             </li>
 
-            {/* <li className="nav-item">
+            <li className="nav-item">
               <NavHashLink
                 smooth
                 to="/#projects"
                 className="nav-link scrollto"
-                activeClassName="active"
+                activeClassName=""
               >
                 Projects
               </NavHashLink>
-            </li> */}
+            </li>
           </ul>
           {/* <List className="mobile-nav-toggle" /> */}
         </nav>
