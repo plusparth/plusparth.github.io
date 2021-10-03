@@ -70,7 +70,7 @@ const experienceList: Array<ResumeEntry> = [
     content: (
       <ul>
         <li>
-          Created simulated robot swarm in Gazebo for displaying robot simuation
+          Created simulated robot swarm in Gazebo to display robot simulation
           over network
         </li>
         <li>
@@ -102,8 +102,8 @@ const experienceList: Array<ResumeEntry> = [
           customer to know when to replace disks to avoid failures
         </li>
         <li>
-          Replicated malware feature extraction researchpaper to demonstrate
-          capabiliteis of cyber security platform
+          Replicated malware feature extraction research paper to demonstrate
+          capabilities of cyber security platform
         </li>
       </ul>
     ),
