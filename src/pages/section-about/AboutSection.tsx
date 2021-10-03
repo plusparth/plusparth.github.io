@@ -7,6 +7,7 @@ import {
   EnvelopeFill,
   Facebook,
   GeoFill,
+  Github,
   Linkedin,
   Twitter,
 } from "react-bootstrap-icons";
@@ -22,34 +23,49 @@ const AboutSection = () => {
               <div>
                 <h2>About Me</h2>
               </div>
-              <p>
-                I'm studying Computer Science so I can pursue a career in CS and
-                robotics to make people's lives easier and automate work that is
-                dangerous or tedious for humans to do.
-              </p>
+              <div className="row">
+                <p>
+                  I'm studying Computer Science so I can pursue a career in CS
+                  and robotics to make people's lives easier and automate work
+                  that is dangerous or tedious for humans to do.
+                </p>
+              </div>
+
               <div className="row justify-content-center">
-                {/* <div className="col-6 social-links justify-content-center">
+                <div className="col-auto social-links">
+                  <a
+                    href="https://github.com/plusparth"
+                    className="d-flex align-items-center justify-content-center"
+                  >
+                    <Github />
+                  </a>
+                </div>
+                <div className="col-auto social-links">
                   <a
                     href="https://www.linkedin.com/in/parth-o-5b1263126/"
-                    className="d-flex align-self-center align-items-center justify-content-center"
+                    className="d-flex align-items-center justify-content-center"
                   >
                     <Linkedin />
                   </a>
+                </div>
+                {/* <div className="col-2 social-links">
                   <a
                     href="https://twitter.com/plusparth"
                     className="d-flex align-items-center justify-content-center"
                   >
                     <Twitter />
                   </a>
+                </div> */}
+                <div className="col-auto social-links">
                   <a
-                    href="https://www.facebook.com/plusparth"
+                    href="mailto:plusparth.website@gmail.com"
                     className="d-flex align-items-center justify-content-center"
                   >
-                    <Facebook />
+                    <EnvelopeFill />
                   </a>
                 </div>
-                <div className="col-6 justify-content-center align-items-center">
-                  <div className="row contact-info align-self-center">
+                {/* <div className="col-6 my-auto">
+                  <div className="row contact-info">
                     <div className="d-flex align-items-center">
                       <i className="contact-logo-container d-flex align-self-center align-items-center justify-content-center">
                         <GeoFill />
@@ -60,7 +76,7 @@ const AboutSection = () => {
                       <i className="contact-logo-container d-flex align-self-center align-items-center justify-content-center">
                         <EnvelopeFill />
                       </i>
-                      <p>oza [at] umd [dot] edu</p>
+                      <p>oza[at]umd[dot]edu</p>
                     </div>
                   </div>
                 </div> */}
