@@ -25,9 +25,9 @@ const AboutSection = () => {
               </div>
               <div className="row">
                 <p>
-                  I'm studying Computer Science so I can pursue a career in CS
-                  and robotics to make people's lives easier and automate work
-                  that is dangerous or tedious for humans to do.
+                  I'm working on robots that I believe have the potential to
+                  make people's lives easier and automate work that is dangerous
+                  for humans to do, and because they're very cool 😎
                 </p>
               </div>
 
