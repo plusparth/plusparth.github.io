@@ -63,6 +63,13 @@ const educationList: Array<ResumeEntry> = [
 
 const experienceList: Array<ResumeEntry> = [
   {
+    title: "Autonomy Products Software Engineer",
+    startDate: "July 2022",
+    endDate: "Present",
+    subtitle: "Skydio @ San Mateo, CA",
+    content: <span></span>,
+  },
+  {
     title: "Software Development Intern",
     startDate: "June 2021",
     endDate: "August 2021",
@@ -111,7 +118,7 @@ const experienceList: Array<ResumeEntry> = [
   {
     title: "Lead Mentor",
     startDate: "June 2018",
-    endDate: "Present",
+    endDate: "July 2022",
     subtitle: "FIRST Robotics Competition Team 4099 @ Poolesville, MD",
     content: (
       <ul>
