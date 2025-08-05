@@ -25,9 +25,11 @@ const AboutSection = () => {
               </div>
               <div className="row">
                 <p>
-                  I'm working on robots that I believe have the potential to
-                  make people's lives easier and automate work that is dangerous
-                  for humans to do, and because they're very cool 😎
+                  Autonomy engineer with expertise in developing intelligent,
+                  reliable robotic systems that enhance safety and improve
+                  quality of life. Passionate about creating autonomous
+                  solutions that make meaningful impacts in real-world
+                  applications.
                 </p>
               </div>
 

@@ -17,7 +17,7 @@ const educationList: Array<ResumeEntry> = [
     title: "Bachelor of Science, Computer Science",
     startDate: "August 2018",
     endDate: "May 2022",
-    subtitle: "University of Maryland, College Park (3.55/4.00 GPA)",
+    subtitle: "University of Maryland, College Park",
     content: (
       <div>
         <p>
@@ -67,7 +67,43 @@ const experienceList: Array<ResumeEntry> = [
     startDate: "July 2022",
     endDate: "Present",
     subtitle: "Skydio @ San Mateo, CA",
-    content: <span></span>,
+    content: (
+      <ul>
+        <li>
+          Led autonomy development for next-generation X10 dock system from
+          ground up, including API design, detection algorithms, and hardware
+          feedback
+        </li>
+        <li>
+          Achieved 99.9% landing success rate in realistic 12 m/s wind
+          conditions through novel planning algorithms that account for vehicle
+          leg positions
+        </li>
+        <li>
+          Developed automated testing infrastructure from fully manual process
+          to 5,000 flights per week through automation of flight operations and
+          wind control systems
+        </li>
+        <li>
+          Reduced propeller folding system failure rates from 5% to 0.5% for
+          customers through seasonal failure analysis
+        </li>
+        <li>
+          Delivered critical battery swap feature for public safety customers on
+          one-week timeline, including robust height estimation system that
+          survives vehicle and dock reboots
+        </li>
+        <li>
+          Created tools for manual and automated failure analysis, including
+          LLM-based log analysis tools and Streamlit log visualization tools for
+          customer support to diagnose and triage failures
+        </li>
+        <li>
+          Initiated technical onboarding and mentoring for expanding team
+          members and interns
+        </li>
+      </ul>
+    ),
   },
   {
     title: "Software Development Intern",
@@ -86,31 +122,8 @@ const experienceList: Array<ResumeEntry> = [
           to 5G edge computing capabilities
         </li>
         <li>
-          Engineered statistics collection system to compare swarm performance
-          with varying network conditions
-        </li>
-      </ul>
-    ),
-  },
-  {
-    title: "Data Science/Software Development Intern",
-    startDate: "June 2020",
-    endDate: "September 2020",
-    subtitle: "Leidos @ Columbia, MD",
-    content: (
-      <ul>
-        <li>
-          Developed frontend for cyber security teaching platform using React,
-          NodeJS, and TypeScript and integrated with AWS
-          Lambda/CloudFormation/DynamoDB backend
-        </li>
-        <li>
-          Wrote Prometheus exporter to provide ZFS status metrics to allow
-          customer to know when to replace disks to avoid failures
-        </li>
-        <li>
-          Replicated malware feature extraction research paper to demonstrate
-          capabilities of cyber security platform
+          Engineered statistics collection system to analyze swarm performance
+          in varying network conditions
         </li>
       </ul>
     ),
@@ -118,7 +131,7 @@ const experienceList: Array<ResumeEntry> = [
   {
     title: "Lead Mentor",
     startDate: "June 2018",
-    endDate: "July 2022",
+    endDate: "July 2023",
     subtitle: "FIRST Robotics Competition Team 4099 @ Poolesville, MD",
     content: (
       <ul>
@@ -127,16 +140,16 @@ const experienceList: Array<ResumeEntry> = [
           50% higher win rate
         </li>
         <li>
-          Incorporated project management techniques including Kanban boards,
-          Agile meeting structure, and overarching Gantt chart for scheduling
+          Incorporated agile project management techniques to plan team progress
+          for each year
         </li>
         <li>
-          Mentor high school students for programming and mechanical design
+          Mentored high school students for programming and mechanical design
           skills throughout year, in parallel with own schoolwork and
           internships
         </li>
         <li>
-          Manage $30,000 annual budget and direct purchasing decisions to
+          Managed $30,000 annual budget and directed purchasing decisions to
           maximize long-term student benefit
         </li>
       </ul>

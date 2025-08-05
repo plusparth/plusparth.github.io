@@ -16,19 +16,7 @@ const skills: Array<Skill> = [
     percentage: 100,
   },
   {
-    name: "Java/Kotlin",
-    percentage: 100,
-  },
-  {
-    name: "C (including embedded)",
-    percentage: 100,
-  },
-  {
-    name: "React/Node.JS/JavaScript/TypeScript",
-    percentage: 100,
-  },
-  {
-    name: "HTML/CSS",
+    name: "C++",
     percentage: 100,
   },
   {
@@ -36,15 +24,23 @@ const skills: Array<Skill> = [
     percentage: 100,
   },
   {
+    name: "Java/Kotlin",
+    percentage: 100,
+  },
+  {
     name: "Bash scripting",
     percentage: 90,
   },
   {
-    name: "OpenCV",
+    name: "SQL",
     percentage: 90,
   },
   {
-    name: "PostgreSQL",
+    name: "React/Node.JS/JavaScript/TypeScript",
+    percentage: 90,
+  },
+  {
+    name: "OpenCV",
     percentage: 75,
   },
   {
@@ -52,12 +48,8 @@ const skills: Array<Skill> = [
     percentage: 75,
   },
   {
-    name: "Swift",
-    percentage: 75,
-  },
-  {
     name: "TensorFlow",
-    percentage: 60,
+    percentage: 50,
   },
 ];
 

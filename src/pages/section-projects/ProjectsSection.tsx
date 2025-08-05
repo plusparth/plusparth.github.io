@@ -26,10 +26,28 @@ type Project = {
 
 const projectList: Array<Project> = [
   {
+    title: "Pairwise",
+    description:
+      "Developed a tool to rank movies, tv shows, and books based on repeated pairwise comparisons. Used AI to learn (and re-learn) NextJS and React.",
+    imageURL: "/public_img_optimized/projects/pairwise.png",
+    links: [
+      {
+        linkType: LinkType.Other,
+        url: "https://plusparth.github.io/pairwise/",
+        title: "Try it out",
+      },
+      {
+        linkType: LinkType.Github,
+        url: "https://github.com/plusparth/pairwise",
+        title: "GitHub",
+      },
+    ],
+  },
+  {
     title: "Swerve Module",
     description:
       "Designed, built, wired, and wrote software for drive pod for a personal robot. The pod is one of four that allows the robot to translate and rotate simultaneously.",
-    imageURL: "/public_img/projects/swerve.jpg",
+    imageURL: "/public_img_optimized/projects/swerve.jpg",
     links: [
       {
         linkType: LinkType.Other,
@@ -47,7 +65,7 @@ const projectList: Array<Project> = [
     title: "2021 Team 4099 Robot",
     description:
       "Mentored and coached high school robotics team to build and program a high-level competitive robot while remaining socially distanced through the COVID-19 pandemic. Personally manufactured over 80% of the parts on the robot.",
-    imageURL: "/public_img/projects/robot-2021.jpg",
+    imageURL: "/public_img_optimized/projects/robot-2021.jpg",
     links: [
       {
         linkType: LinkType.Other,
@@ -65,7 +83,7 @@ const projectList: Array<Project> = [
     title: "COVID-19 Testing Data Science",
     description:
       "Trained a model on publicly available COVID-19 data to predict a potential mortality rate in the US had we had more testing.",
-    imageURL: "/public_img/projects/coviddata.png",
+    imageURL: "/public_img_optimized/projects/coviddata.png",
     links: [
       {
         linkType: LinkType.Other,
@@ -78,7 +96,7 @@ const projectList: Array<Project> = [
     title: "Telemetry Data Plotter",
     description:
       "Wrote an Electron app to allow FIRST Robotics teams to visualize telemetry data from a competition robot to make it easier to diagnose problems.",
-    imageURL: "/public_img/projects/plotter-img.png",
+    imageURL: "/public_img_optimized/projects/plotter-img.png",
     links: [
       {
         linkType: LinkType.Github,
