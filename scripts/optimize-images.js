@@ -11,10 +11,47 @@ function formatBytes(bytes) {
   return (bytes / 1024 / 1024).toFixed(2) + "MB";
 }
 
+function getAllImageFiles(
+  dir,
+  extensions = [".jpg", ".jpeg", ".png", ".webp"]
+) {
+  let results = [];
+
+  if (!fs.existsSync(dir)) {
+    return results;
+  }
+
+  const list = fs.readdirSync(dir);
+
+  list.forEach((file) => {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+
+    if (stat && stat.isDirectory()) {
+      // Recursively search subdirectories
+      results = results.concat(getAllImageFiles(filePath, extensions));
+    } else {
+      // Check if file has an image extension
+      const ext = path.extname(file).toLowerCase();
+      if (extensions.includes(ext)) {
+        results.push(filePath);
+      }
+    }
+  });
+
+  return results;
+}
+
 async function optimizeImage(inputPath, outputPath, options = {}) {
   const { quality = 80, progressive = true } = options;
 
   try {
+    // Ensure output directory exists
+    const outputDir = path.dirname(outputPath);
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+    }
+
     const ext = path.extname(inputPath).toLowerCase();
     let sharpInstance = sharp(inputPath);
 
@@ -22,6 +59,8 @@ async function optimizeImage(inputPath, outputPath, options = {}) {
       await sharpInstance.jpeg({ quality, progressive }).toFile(outputPath);
     } else if (ext === ".png") {
       await sharpInstance.png({ quality, progressive }).toFile(outputPath);
+    } else if (ext === ".webp") {
+      await sharpInstance.webp({ quality }).toFile(outputPath);
     } else {
       // For other formats, just copy
       fs.copyFileSync(inputPath, outputPath);
@@ -33,138 +72,171 @@ async function optimizeImage(inputPath, outputPath, options = {}) {
       `⚠️  Could not optimize ${path.basename(inputPath)}: ${error.message}`
     );
     // Fallback: copy original file
+    const outputDir = path.dirname(outputPath);
+    if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir, { recursive: true });
+    }
     fs.copyFileSync(inputPath, outputPath);
     return false;
   }
 }
 
-async function optimizeImages() {
-  console.log("🖼️  Starting image optimization with Sharp...");
+function getOptimizedPath(inputPath, sourceDir, optimizedDir) {
+  const relativePath = path.relative(sourceDir, inputPath);
+  return path.join(optimizedDir, relativePath);
+}
 
-  // Create optimized directories
-  const optimizedSrcDir = "src/img-optimized";
-  const optimizedPublicDir = "public/public_img_optimized/projects";
+async function processImageDirectory(sourceDir, optimizedDir, options = {}) {
+  const { quality = 80, logPrefix = "" } = options;
 
-  if (!fs.existsSync(optimizedSrcDir)) {
-    fs.mkdirSync(optimizedSrcDir, { recursive: true });
-  }
+  console.log(`${logPrefix}📁 Processing ${sourceDir}...`);
 
-  if (!fs.existsSync(optimizedPublicDir)) {
-    fs.mkdirSync(optimizedPublicDir, { recursive: true });
+  const imageFiles = getAllImageFiles(sourceDir);
+
+  if (imageFiles.length === 0) {
+    console.log(`${logPrefix}ℹ️  No images found in ${sourceDir}`);
+    return { originalSize: 0, optimizedSize: 0, count: 0 };
   }
 
   let totalOriginalSize = 0;
   let totalOptimizedSize = 0;
+  let processedCount = 0;
+
+  for (const inputPath of imageFiles) {
+    const outputPath = getOptimizedPath(inputPath, sourceDir, optimizedDir);
+    const originalSize = getFileSize(inputPath);
+
+    const relativePath = path.relative(sourceDir, inputPath);
+
+    await optimizeImage(inputPath, outputPath, { quality });
+
+    const optimizedSize = getFileSize(outputPath);
+    const savings =
+      originalSize > 0
+        ? (((originalSize - optimizedSize) / originalSize) * 100).toFixed(1)
+        : 0;
+
+    console.log(
+      `${logPrefix}✅ ${relativePath}: ${formatBytes(
+        originalSize
+      )} → ${formatBytes(optimizedSize)} (${savings}% ${
+        savings >= 0 ? "smaller" : "larger"
+      })`
+    );
+
+    totalOriginalSize += originalSize;
+    totalOptimizedSize += optimizedSize;
+    processedCount++;
+  }
+
+  return {
+    originalSize: totalOriginalSize,
+    optimizedSize: totalOptimizedSize,
+    count: processedCount,
+  };
+}
+
+async function optimizeImages() {
+  console.log("🖼️  Starting recursive image optimization with Sharp...");
+
+  // Define source and optimized directories
+  const imageDirectories = [
+    {
+      source: "src/img",
+      optimized: "src/img-optimized",
+      quality: 80,
+      description: "Source images",
+    },
+    {
+      source: "public/public_img",
+      optimized: "public/public_img_optimized",
+      quality: 85,
+      description: "Public images (higher quality for projects)",
+    },
+  ];
+
+  let grandTotalOriginal = 0;
+  let grandTotalOptimized = 0;
+  let grandTotalCount = 0;
 
   try {
-    // Check if source directories exist
-    const srcImgDir = "src/img";
-    const publicImgDir = "public/public_img/projects";
+    for (const config of imageDirectories) {
+      if (fs.existsSync(config.source)) {
+        console.log(`\n🎯 ${config.description}:`);
 
-    let srcImages = [];
-    let projectImages = [];
-
-    if (fs.existsSync(srcImgDir)) {
-      srcImages = fs
-        .readdirSync(srcImgDir)
-        .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file));
-    }
-
-    if (fs.existsSync(publicImgDir)) {
-      projectImages = fs
-        .readdirSync(publicImgDir)
-        .filter((file) => /\.(jpg|jpeg|png|webp)$/i.test(file));
-    }
-
-    if (srcImages.length > 0) {
-      console.log("📁 Optimizing src/img/ images...");
-
-      // Optimize src images
-      for (const file of srcImages) {
-        const inputPath = path.join(srcImgDir, file);
-        const outputPath = path.join(optimizedSrcDir, file);
-
-        const originalSize = getFileSize(inputPath);
-
-        await optimizeImage(inputPath, outputPath, { quality: 80 });
-
-        const optimizedSize = getFileSize(outputPath);
-        const savings = (
-          ((originalSize - optimizedSize) / originalSize) *
-          100
-        ).toFixed(1);
-
-        console.log(
-          `✅ ${file}: ${formatBytes(originalSize)} → ${formatBytes(
-            optimizedSize
-          )} (${savings}% smaller)`
+        const result = await processImageDirectory(
+          config.source,
+          config.optimized,
+          {
+            quality: config.quality,
+            logPrefix: "  ",
+          }
         );
 
-        totalOriginalSize += originalSize;
-        totalOptimizedSize += optimizedSize;
+        grandTotalOriginal += result.originalSize;
+        grandTotalOptimized += result.optimizedSize;
+        grandTotalCount += result.count;
+
+        if (result.count > 0) {
+          const savings = (
+            ((result.originalSize - result.optimizedSize) /
+              result.originalSize) *
+            100
+          ).toFixed(1);
+          console.log(
+            `  📊 Subtotal: ${formatBytes(result.originalSize)} → ${formatBytes(
+              result.optimizedSize
+            )} (${savings}% savings, ${result.count} files)`
+          );
+        }
+      } else {
+        console.log(
+          `\n⚠️  Directory ${config.source} does not exist, skipping...`
+        );
       }
     }
 
-    if (projectImages.length > 0) {
-      console.log("📁 Optimizing public/public_img/projects/ images...");
-
-      // Optimize project images with slightly higher quality
-      for (const file of projectImages) {
-        const inputPath = path.join(publicImgDir, file);
-        const outputPath = path.join(optimizedPublicDir, file);
-
-        const originalSize = getFileSize(inputPath);
-
-        await optimizeImage(inputPath, outputPath, { quality: 85 });
-
-        const optimizedSize = getFileSize(outputPath);
-        const savings = (
-          ((originalSize - optimizedSize) / originalSize) *
-          100
-        ).toFixed(1);
-
-        console.log(
-          `✅ ${file}: ${formatBytes(originalSize)} → ${formatBytes(
-            optimizedSize
-          )} (${savings}% smaller)`
-        );
-
-        totalOriginalSize += originalSize;
-        totalOptimizedSize += optimizedSize;
-      }
-    }
-
-    if (totalOriginalSize > 0) {
-      // Show totals
+    if (grandTotalCount > 0) {
+      // Show grand totals
       const totalSavings = (
-        ((totalOriginalSize - totalOptimizedSize) / totalOriginalSize) *
+        ((grandTotalOriginal - grandTotalOptimized) / grandTotalOriginal) *
         100
       ).toFixed(1);
+
       console.log(`\n🎉 Optimization complete!`);
       console.log(
-        `📊 Total size: ${formatBytes(totalOriginalSize)} → ${formatBytes(
-          totalOptimizedSize
+        `📊 Total: ${formatBytes(grandTotalOriginal)} → ${formatBytes(
+          grandTotalOptimized
         )}`
       );
       console.log(
-        `💾 Total savings: ${totalSavings}% (${formatBytes(
-          totalOriginalSize - totalOptimizedSize
-        )})`
+        `💾 Overall savings: ${totalSavings}% (${formatBytes(
+          grandTotalOptimized - grandTotalOriginal
+        )} saved)`
       );
+      console.log(`📈 Files processed: ${grandTotalCount}`);
 
-      console.log("\n📝 Next steps:");
-      console.log("1. Update your imports to use the optimized images");
-      console.log("2. Replace src/img/ references with src/img-optimized/");
+      console.log("\n📝 Usage Notes:");
+      console.log("• Update your imports to use the optimized images");
+      console.log("• src/img/ references → src/img-optimized/");
       console.log(
-        "3. Replace public/public_img/projects/ references with public/public_img_optimized/projects/"
+        "• public/public_img/ references → public/public_img_optimized/"
       );
+      console.log("• Optimized images maintain the same directory structure");
     } else {
-      console.log("ℹ️  No images found to optimize.");
+      console.log("ℹ️  No images found to optimize in any directory.");
     }
   } catch (error) {
     console.error("❌ Error optimizing images:", error.message);
+    console.error(error.stack);
     process.exit(1);
   }
 }
+
+// Handle unhandled promise rejections
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise, "reason:", reason);
+  process.exit(1);
+});
 
 optimizeImages().catch(console.error);
