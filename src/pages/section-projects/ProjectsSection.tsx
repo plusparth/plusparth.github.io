@@ -130,25 +130,27 @@ const ProjectsSection = () => {
                     switch (link.linkType) {
                       case LinkType.Github:
                         return (
-                          <span className="project-link">
+                          <span className="project-link" key={link.url}>
                             <Github className="project-link-icon" />{" "}
                             <Card.Link href={link.url}>{link.title}</Card.Link>
                           </span>
                         );
                       case LinkType.Youtube:
                         return (
-                          <span className="project-link">
+                          <span className="project-link" key={link.url}>
                             <Youtube className="project-link-icon" />{" "}
                             <Card.Link href={link.url}>{link.title}</Card.Link>
                           </span>
                         );
                       case LinkType.Other:
                         return (
-                          <span className="project-link">
+                          <span className="project-link" key={link.url}>
                             <Link45deg className="project-link-icon" />
                             <Card.Link href={link.url}>{link.title}</Card.Link>
                           </span>
                         );
+                      default:
+                        return null;
                     }
                   })}
                 </Card.Footer>

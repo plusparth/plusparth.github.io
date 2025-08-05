@@ -22,43 +22,23 @@ const PersonalNavbar = () => {
               </NavHashLink>
             </li> */}
             <li className="nav-item">
-              <NavHashLink
-                smooth
-                to="#about"
-                className="nav-link scrollto"
-                activeClassName=""
-              >
+              <NavHashLink smooth to="#about" className="nav-link scrollto">
                 About
               </NavHashLink>
             </li>
             <li className="nav-item">
-              <NavHashLink
-                smooth
-                to="#skills"
-                className="nav-link scrollto"
-                activeClassName=""
-              >
+              <NavHashLink smooth to="#skills" className="nav-link scrollto">
                 Skills
               </NavHashLink>
             </li>
             <li className="nav-item">
-              <NavHashLink
-                smooth
-                to="#resume"
-                className="nav-link scrollto"
-                activeClassName=""
-              >
+              <NavHashLink smooth to="#resume" className="nav-link scrollto">
                 Resume
               </NavHashLink>
             </li>
 
             <li className="nav-item">
-              <NavHashLink
-                smooth
-                to="/#projects"
-                className="nav-link scrollto"
-                activeClassName=""
-              >
+              <NavHashLink smooth to="/#projects" className="nav-link scrollto">
                 Projects
               </NavHashLink>
             </li>

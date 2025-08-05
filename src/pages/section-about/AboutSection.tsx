@@ -3,14 +3,7 @@ import React from "react";
 import TitlelessSection from "components/section-no-title/TitlelessSection";
 
 import "./AboutSection.scss";
-import {
-  EnvelopeFill,
-  Facebook,
-  GeoFill,
-  Github,
-  Linkedin,
-  Twitter,
-} from "react-bootstrap-icons";
+import { EnvelopeFill, Github, Linkedin } from "react-bootstrap-icons";
 
 const AboutSection = () => {
   return (
